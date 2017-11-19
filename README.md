@@ -1,9 +1,8 @@
-# self-introduction
-https://github.com/GwapTeam/self-introduction
+# shooting-game
+https://github.com/GwapTeam/shooting-game
 
 ## Overview
-gakken educational self-introduction texts
+gakken educational shooting-game texts
 Open html file using chrome.
 
 Manual: (GwapTeam/manual)[https://github.com/GwapTeam/manual]
-
