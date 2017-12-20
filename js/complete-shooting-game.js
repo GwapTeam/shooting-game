@@ -12,10 +12,9 @@ window.onload = function() {
 
     var player = new createjs.Shape();
     player.graphics.beginFill("blue").moveTo(5, 0).lineTo(-20, 10).lineTo(-20, -10);
+    player.x = 100;
+    player.y = 100;
     stage.addChild(player);
-
-    var score = new createjs.Text("0", "24px sans-serif", "white");
-    stage.addChild(score);
 
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener("tick", handleTick);
@@ -26,36 +25,37 @@ window.onload = function() {
         count ++;
 
         if (count % 120 == 0) {
-            var enemy = new createjs.Shape();
-            enemy.graphics.beginFill("red").moveTo(-5, 0).lineTo(10, +5).lineTo(10, -5).closePath();
-            enemy.x = STAGE_W;
-            enemy.y = STAGE_H * Math.random();
-            stage.addChild(enemy);
-            enemyList.push(enemy);
+            createEnemy();
         }
 
         for (var i = 0; i < enemyList.length; i++) {
             enemyList[i].x -= 2;
         }
-
         for (var i = 0; i < bulletList.length; i++) {
             bulletList[i].x += 10;
         }
-
         for (var j = 0; j < enemyList.length; j++) {
             for (var i = 0; i < bulletList.length; i++) {
                 var bullet = bulletList[i];
                 var enemy = enemyList[j];
                 var local = bullet.localToLocal(0, 0, enemy);
-
+        
                 if (enemy.hitTest(local.x, local.y) == true) {
                     stage.removeChild(enemyList[j]);
                     enemyList.splice(j, 1);
                 }
             }
         }
-
         stage.update();
+    }
+
+    function createEnemy() {
+        var enemy = new createjs.Shape();
+        enemy.graphics.beginFill("red").moveTo(-5, 0).lineTo(10, +5).lineTo(10, -5).closePath();
+        enemy.x = STAGE_W;
+        enemy.y = STAGE_H * Math.random();
+        stage.addChild(enemy);
+        enemyList.push(enemy);
     }
 
     function shot() {
@@ -68,4 +68,5 @@ window.onload = function() {
     }
 
     stage.addEventListener("click", shot);
+
 }
