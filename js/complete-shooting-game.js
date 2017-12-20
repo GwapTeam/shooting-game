@@ -14,6 +14,9 @@ window.onload = function() {
     player.graphics.beginFill("blue").moveTo(5, 0).lineTo(-20, 10).lineTo(-20, -10);
     stage.addChild(player);
 
+    player.x = 100;
+    player.y = 100;
+    
     var score = new createjs.Text("0", "24px sans-serif", "white");
     stage.addChild(score);
 
