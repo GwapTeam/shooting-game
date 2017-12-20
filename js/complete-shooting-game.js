@@ -19,6 +19,15 @@ window.onload = function() {
 
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener("tick", handleTick);
+    
+    function createEnemy() {
+        var enemy = new createjs.Shape();
+        enemy.graphics.beginFill("red").moveTo(-5, 0).lineTo(10, +5).lineTo(10, -5).closePath();
+        enemy.x = STAGE_W;
+        enemy.y = STAGE_H * Math.random();
+        stage.addChild(enemy);
+        enemyList.push(enemy);
+    }
 
     function handleTick() {
         player.x = stage.mouseX;
@@ -26,12 +35,7 @@ window.onload = function() {
         count ++;
 
         if (count % 120 == 0) {
-            var enemy = new createjs.Shape();
-            enemy.graphics.beginFill("red").moveTo(-5, 0).lineTo(10, +5).lineTo(10, -5).closePath();
-            enemy.x = STAGE_W;
-            enemy.y = STAGE_H * Math.random();
-            stage.addChild(enemy);
-            enemyList.push(enemy);
+            createEnemy()
         }
 
         for (var i = 0; i < enemyList.length; i++) {
