@@ -7,11 +7,19 @@ window.onload = function() {
     var bulletList = [];
 
     var bg = new createjs.Shape();
-    bg.graphics.beginFill("green").drawRect(0, 0, STAGE_W, STAGE_H);
+    bg.graphics
+      .beginFill("green")
+      .drawRect(0, 0, STAGE_W, STAGE_H);
+
     stage.addChild(bg);
 
     var player = new createjs.Shape();
-    player.graphics.beginFill("blue").moveTo(5, 0).lineTo(-20, 10).lineTo(-20, -10);
+    player.graphics
+          .beginFill("blue")
+          .moveTo(5, 0)
+          .lineTo(-20, 10)
+          .lineTo(-20, -10);
+
     player.x = 100;
     player.y = 100;
     stage.addChild(player);
@@ -51,7 +59,13 @@ window.onload = function() {
 
     function createEnemy() {
         var enemy = new createjs.Shape();
-        enemy.graphics.beginFill("red").moveTo(-5, 0).lineTo(10, +5).lineTo(10, -5).closePath();
+        enemy.graphics
+             .beginFill("red")
+             .moveTo(-5, 0)
+             .lineTo(10, +5)
+             .lineTo(10, -5)
+             .closePath();
+
         enemy.x = STAGE_W;
         enemy.y = STAGE_H * Math.random();
         stage.addChild(enemy);
@@ -60,7 +74,10 @@ window.onload = function() {
 
     function shot() {
         var bullet = new createjs.Shape();
-        bullet.graphics.beginFill("white").drawCircle(0, 0, 3);
+        bullet.graphics
+              .beginFill("white")
+              .drawCircle(0, 0, 3);
+
         bullet.x = player.x;
         bullet.y = player.y;
         stage.addChild(bullet);
